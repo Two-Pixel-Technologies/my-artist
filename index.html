@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>myartist.in — India's Most Trusted Marketplace for Event Artists</title>
+<meta name="description" content="Connecting incredible talent with amazing people to create unforgettable events. Launching soon.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Decorative background layer (waves / glows) -->
+<div class="bg-decor" aria-hidden="true">
+  <div class="glow glow-orange"></div>
+  <div class="glow glow-purple"></div>
+  <svg class="wave-lines" viewBox="0 0 1440 900" preserveAspectRatio="none">
+    <path d="M-100,300 C 300,200 600,400 1540,250" stroke="url(#waveGrad1)" stroke-width="1" fill="none"/>
+    <path d="M-100,500 C 400,420 700,600 1540,480" stroke="url(#waveGrad2)" stroke-width="1" fill="none"/>
+    <path d="M-100,150 C 350,80 800,180 1540,60" stroke="url(#waveGrad1)" stroke-width="1" fill="none"/>
+    <defs>
+      <linearGradient id="waveGrad1" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#F5811F" stop-opacity="0"/>
+        <stop offset="50%" stop-color="#F5811F" stop-opacity="0.35"/>
+        <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="waveGrad2" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0"/>
+        <stop offset="50%" stop-color="#4A9FFF" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#EC4899" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+  </svg>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar" id="navbar">
+  <div class="container navbar__inner">
+    <a href="#hero" class="logo">myartist<span class="logo-dot">.in</span></a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#artists">For Artists</a>
+      <a href="#organizers">For Hiring</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="navbar__actions">
+      <a href="#contact" class="btn btn--outline btn--sm">Join Waitlist</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="container hero__inner">
+
+      <div class="hero__content">
+        <span class="eyebrow reveal" data-reveal>Launching Soon</span>
+
+        <h1 class="hero__heading reveal" data-reveal>
+          India's Most Trusted<br>
+          Marketplace for<br>
+          <span class="text-accent-orange">Event Artists.</span>
+        </h1>
+
+        <p class="hero__paragraph reveal" data-reveal>
+          Connecting incredible talent with amazing people to create unforgettable events.
+        </p>
+
+        <div class="hero__ctas reveal" data-reveal>
+          <a href="#contact" class="btn btn--primary">Hire Artists</a>
+          <a href="#artists" class="btn btn--outline">Join as Artist</a>
+        </div>
+      </div>
+
+      <div class="hero__visual reveal" data-reveal>
+        <!-- Artist photo collage -->
+        <div class="photo-collage">
+          <div class="photo-card photo-card--guitarist">
+            <img src="public/images/guitarist.jpg" alt="Male guitarist performing">
+          </div>
+          <div class="photo-card photo-card--singer">
+            <img src="public/images/singer.jpg" alt="Female singer performing on stage">
+          </div>
+          <div class="photo-card photo-card--dj">
+            <img src="public/images/dj.jpg" alt="DJ performing at an event">
+          </div>
+          <div class="photo-card photo-card--comedian">
+            <img src="public/images/comedian.jpg" alt="Comedian performing on stage">
+          </div>
+          <div class="photo-card photo-card--makeup">
+            <img src="public/images/makeup-artist.jpg" alt="Makeup artist at work">
+          </div>
+        </div>
+
+        <!-- Category badges -->
+        <div class="cat-badge cat-badge--musicians" style="--accent:#8B5CF6;">
+          <span class="cat-badge__icon">&#9835;</span> Musicians
+        </div>
+        <div class="cat-badge cat-badge--hosts" style="--accent:#4A9FFF;">
+          <span class="cat-badge__icon">&#127908;</span> Hosts
+        </div>
+        <div class="cat-badge cat-badge--comedians" style="--accent:#22C55E;">
+          <span class="cat-badge__icon">&#127908;</span> Comedians
+        </div>
+        <div class="cat-badge cat-badge--makeup" style="--accent:#EC4899;">
+          <span class="cat-badge__icon">&#128132;</span> Makeup Artists
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="about" id="about">
+    <div class="container about__inner">
+      <div class="about__content">
+        <span class="eyebrow reveal" data-reveal>About myartist</span>
+        <h2 class="about__heading reveal" data-reveal>A World of Talent.<br>At Your <span class="text-accent-gradient">Fingertips.</span></h2>
+        <p class="about__paragraph reveal" data-reveal>Thousands of artists. Countless possibilities.<br>One platform that brings it all together.</p>
+        <div class="stats reveal" data-reveal><div class="stat"><strong>10+</strong><span>Categories</span></div><div class="stat"><strong>500+</strong><span>Verified Artists</span></div><div class="stat"><strong>1000+</strong><span>Events Soon</span></div><div class="stat"><strong>∞</strong><span>Memories</span></div></div>
+      </div>
+      <div class="wheel-wrap reveal" data-reveal aria-label="Artist categories, all connected for unforgettable events">
+        <svg class="about-wheel" viewBox="0 0 720 500" role="img" aria-labelledby="wheel-title wheel-description">
+          <title id="wheel-title">Artist categories connected for unforgettable events</title>
+          <desc id="wheel-description">Eight separated category panels form a semicircular fan around a connected artists hub.</desc>
+          <defs><radialGradient id="hubGlow" cx="50%" cy="24%" r="78%"><stop offset="0%" stop-color="#d8526f"/><stop offset="36%" stop-color="#6f233e"/><stop offset="100%" stop-color="#11111d"/></radialGradient></defs>
+          <path class="wheel-ring" d="M 30 408 A 330 330 0 0 1 690 408" />
+          <g class="wheel-panel comedians"><path d="M 39.9 351.6 A 325 325 0 0 1 70.4 260.5 L 242.4 348.1 A 132 132 0 0 0 230 385.1 Z"/><text x="140" y="323"><tspan class="wheel-svg-icon">&#9786;</tspan><tspan x="140" dy="20">Comedians</tspan></text></g>
+          <g class="wheel-panel hosts"><path d="M 78.5 245.5 A 325 325 0 0 1 138.4 170.3 L 270 311.5 A 132 132 0 0 0 245.7 342 Z"/><text x="178" y="252"><tspan class="wheel-svg-icon">&#9834;</tspan><tspan x="178" dy="20">Hosts</tspan></text></g>
+          <g class="wheel-panel djs"><path d="M 151.1 159 A 325 325 0 0 1 233 108.8 L 308.4 286.5 A 132 132 0 0 0 275.2 306.9 Z"/><text x="239" y="199"><tspan class="wheel-svg-icon">&#9673;</tspan><tspan x="239" dy="20">DJs</tspan></text></g>
+          <g class="wheel-panel makeup"><path d="M 248.8 102.6 A 325 325 0 0 1 343 83.4 L 353.1 276.2 A 132 132 0 0 0 314.9 284 Z"/><text x="314" y="166"><tspan class="wheel-svg-icon">&#10022;</tspan><tspan x="314" dy="19">Makeup</tspan><tspan x="314" dy="15">Artists</tspan></text></g>
+          <g class="wheel-panel dancers"><path d="M 360 83 A 325 325 0 0 1 455 97.2 L 398.6 281.8 A 132 132 0 0 0 360 276 Z"/><text x="394" y="164"><tspan class="wheel-svg-icon">&#10023;</tspan><tspan x="394" dy="20">Dancers</tspan></text></g>
+          <g class="wheel-panel musicians"><path d="M 471.2 102.6 A 325 325 0 0 1 555.6 148.4 L 439.4 302.6 A 132 132 0 0 0 405.1 284 Z"/><text x="471" y="190"><tspan class="wheel-svg-icon">&#9835;</tspan><tspan x="471" dy="20">Musicians</tspan></text></g>
+          <g class="wheel-panel magicians"><path d="M 568.9 159 A 325 325 0 0 1 632.6 231 L 470.7 336.1 A 132 132 0 0 0 444.8 306.9 Z"/><text x="534" y="240"><tspan class="wheel-svg-icon">&#9830;</tspan><tspan x="534" dy="20">Magicians</tspan></text></g>
+          <g class="wheel-panel singers"><path d="M 641.5 245.5 A 325 325 0 0 1 676.7 334.9 L 488.6 378.3 A 132 132 0 0 0 474.3 342 Z"/><text x="576" y="309"><tspan class="wheel-svg-icon">&#9834;</tspan><tspan x="576" dy="20">Singers</tspan></text></g>
+          <g class="wheel-hub"><rect x="276" y="340" width="168" height="142" rx="50"/><text x="360" y="391"><tspan class="wheel-hub-icon">&#9786;</tspan><tspan x="360" dy="29" class="wheel-hub-title">All Connected.</tspan><tspan x="360" dy="19" class="wheel-hub-copy">For Unforgettable Events</tspan></text></g>
+        </svg>
+        <div class="category-wheel">
+          <div class="wheel-segment seg-comedians"><span class="wheel-icon">☺</span><span>Comedians</span></div><div class="wheel-segment seg-hosts"><span class="wheel-icon">♬</span><span>Hosts</span></div><div class="wheel-segment seg-djs"><span class="wheel-icon">◉</span><span>DJs</span></div><div class="wheel-segment seg-makeup"><span class="wheel-icon">⌁</span><span>Makeup<br>Artists</span></div><div class="wheel-segment seg-dancers"><span class="wheel-icon">♧</span><span>Dancers</span></div><div class="wheel-segment seg-magicians"><span class="wheel-icon">♕</span><span>Magicians</span></div><div class="wheel-segment seg-musicians"><span class="wheel-icon">♧</span><span>Musicians</span></div><div class="wheel-segment seg-singers"><span class="wheel-icon">♬</span><span>Singers</span></div>
+          <div class="wheel-center"><b>♧</b><strong>All Connected.</strong><small>For Unforgettable Events</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOR PEOPLE HIRING ARTISTS ============ -->
+  <section class="hiring" id="organizers">
+    <div class="container hiring__main">
+      <div class="hiring__content reveal" data-reveal>
+        <span class="eyebrow">For people hiring artists</span>
+        <h2 class="hiring__heading">Whatever The Occasion,<br>We Have The <span>Artist.</span></h2>
+        <p>Choose from verified professionals<br>for every type of event.</p>
+        <a class="btn btn--teal" href="#contact">Tell Us Your Requirement <span aria-hidden="true">&#8594;</span></a>
+      </div>
+      <div class="event-showcase reveal" data-reveal aria-label="Events we support">
+        <article class="event-card event-card--wedding"><img src="public/images/events/wedding.jpg" alt="Wedding event"><div class="event-card__copy"><b>&#10047;</b><h3>Weddings</h3><p>Make your big day<br>magical.</p></div></article>
+        <article class="event-card event-card--corporate"><img src="public/images/events/corporate.jpg" alt="Corporate event"><div class="event-card__copy"><b>&#128188;</b><h3>Corporate<br>Events</h3><p>Professional &amp;<br>impactful events.</p></div></article>
+        <article class="event-card event-card--birthday"><img src="public/images/events/birthday.jpg" alt="Birthday celebration"><div class="event-card__copy"><b>&#127874;</b><h3>Birthdays</h3><p>Fun, memorable<br>celebrations.</p></div></article>
+        <article class="event-card event-card--college"><img src="public/images/events/college-fest.jpg" alt="College festival"><div class="event-card__copy"><b>&#127891;</b><h3>College Fests</h3><p>Unforgettable<br>experiences.</p></div></article>
+        <article class="event-card event-card--party"><img src="public/images/events/private-party.jpg" alt="Private party"><div class="event-card__copy"><b>&#10024;</b><h3>Private Parties</h3><p>Intimate gatherings,<br>great performers.</p></div></article>
+      </div>
+    </div>
+    <div class="container trust-strip reveal" data-reveal>
+      <div class="trust-item trust-item--verified"><b>&#10023;</b><span><strong>Verified Artists</strong><small>Background checked</small></span></div>
+      <div class="trust-item trust-item--quality"><b>&#10022;</b><span><strong>Quality Guaranteed</strong><small>Best performances</small></span></div>
+      <div class="trust-item trust-item--easy"><b>&#10003;</b><span><strong>Easy &amp; Fast</strong><small>Hassle-free process.</small></span></div>
+      <div class="trust-item trust-item--all"><b>&#10025;</b><span><strong>All In One Place</strong><small>Multiple categories</small></span></div>
+    </div>
+  </section>
+
+  <!-- ============ FOR ARTISTS ============ -->
+  <section class="artists" id="artists">
+    <div class="container artists__inner">
+      <!-- LEFT CONTENT -->
+      <div class="artists__content reveal" data-reveal>
+        <span class="eyebrow">For Artists</span>
+        <h2 class="artists__heading">We Put<br>Artists On<br><span class="text-accent-teal">The Map.</span></h2>
+        <p class="artists__description">A platform built to help you<br>get discovered, booked and<br>celebrate your journey.</p>
+        <div class="artists__cta-group">
+          <a href="#contact" class="btn btn--teal btn--artists">Sign Up Now</a>
+          <p class="artists__cta-subtext">Join a community of<br>passionate performers!</p>
+        </div>
+      </div>
+
+      <!-- CENTER FEATURES -->
+      <div class="artists__features reveal" data-reveal>
+        <div class="feature-row">
+          <div class="feature-icon feature-icon--green">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <h3>Get Discovered</h3>
+            <p>Show your talent to the right audience.</p>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div class="feature-icon feature-icon--teal">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="8" width="14" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+              <path d="M7 8V5a2 2 0 012-2h2a2 2 0 012 2v3" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <h3>More Event Opportunities</h3>
+            <p>Find more gigs that match your style.</p>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div class="feature-icon feature-icon--green">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 10l3.5 3.5L16 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <h3>Easy Onboarding</h3>
+            <p>Create your profile and get started in minutes.</p>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div class="feature-icon feature-icon--orange">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 2c4.4 0 8 3.6 8 8s-3.6 8-8 8-8-3.6-8-8 3.6-8 8-8m0-2C4.48 0 0 4.48 0 10s4.48 10 10 10 10-4.48 10-10S15.52 0 10 0z" fill="currentColor"/>
+              <path d="M10 5v5h3.5" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <h3>Verified Leads</h3>
+            <p>Connect with real people. No spam, no fake leads.</p>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div class="feature-icon feature-icon--pink">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 0l3.09 6.26L20 7.64l-5 4.87 1.18 6.88L10 15.77l-6.18 3.62L5 12.51 0 7.64l6.91-1.38L10 0z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <h3>Grow Your Career</h3>
+            <p>Get reviews, build your reputation and rise.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT VISUAL - World Map & Artist Circles -->
+      <div class="artists__visual reveal" data-reveal>
+        <div class="world-map">
+          <!-- Subtle world map background -->
+          <svg class="map-background" viewBox="0 0 600 500" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <pattern id="dot-pattern" patternUnits="userSpaceOnUse" width="50" height="50">
+                <circle cx="5" cy="5" r="1.5" fill="rgba(46, 204, 154, 0.15)"/>
+              </pattern>
+            </defs>
+            <!-- Subtle grid -->
+            <rect width="600" height="500" fill="url(#dot-pattern)"/>
+            <!-- Subtle connecting lines between circles -->
+            <g class="map-lines" opacity="0.25">
+              <line x1="150" y1="100" x2="350" y2="150" stroke="rgba(46, 204, 154, 0.4)" stroke-width="1.5" stroke-dasharray="5,5"/>
+              <line x1="350" y1="150" x2="450" y2="280" stroke="rgba(46, 204, 154, 0.4)" stroke-width="1.5" stroke-dasharray="5,5"/>
+              <line x1="150" y1="100" x2="200" y2="320" stroke="rgba(74, 159, 255, 0.4)" stroke-width="1.5" stroke-dasharray="5,5"/>
+              <line x1="450" y1="280" x2="380" y2="380" stroke="rgba(236, 72, 153, 0.4)" stroke-width="1.5" stroke-dasharray="5,5"/>
+              <line x1="200" y1="320" x2="380" y2="380" stroke="rgba(139, 92, 246, 0.4)" stroke-width="1.5" stroke-dasharray="5,5"/>
+            </g>
+            <!-- Location pins -->
+            <g class="map-pins" opacity="0.4">
+              <circle cx="150" cy="100" r="5" fill="none" stroke="rgba(46, 204, 154, 0.6)" stroke-width="2"/>
+              <circle cx="150" cy="100" r="3" fill="rgba(46, 204, 154, 0.5)"/>
+              
+              <circle cx="350" cy="150" r="5" fill="none" stroke="rgba(74, 159, 255, 0.6)" stroke-width="2"/>
+              <circle cx="350" cy="150" r="3" fill="rgba(74, 159, 255, 0.5)"/>
+              
+              <circle cx="200" cy="320" r="5" fill="none" stroke="rgba(236, 72, 153, 0.6)" stroke-width="2"/>
+              <circle cx="200" cy="320" r="3" fill="rgba(236, 72, 153, 0.5)"/>
+              
+              <circle cx="450" cy="280" r="5" fill="none" stroke="rgba(139, 92, 246, 0.6)" stroke-width="2"/>
+              <circle cx="450" cy="280" r="3" fill="rgba(139, 92, 246, 0.5)"/>
+              
+              <circle cx="380" cy="380" r="5" fill="none" stroke="rgba(245, 129, 31, 0.6)" stroke-width="2"/>
+              <circle cx="380" cy="380" r="3" fill="rgba(245, 129, 31, 0.5)"/>
+            </g>
+          </svg>
+
+          <!-- Artist circles -->
+          <div class="artist-circles">
+            <div class="artist-circle artist-circle--guitarist">
+              <img src="public/images/guitarist.jpg" alt="Guitarist performer">
+              <div class="circle-glow glow-green"></div>
+            </div>
+            <div class="artist-circle artist-circle--singer">
+              <img src="public/images/singer.jpg" alt="Female singer">
+              <div class="circle-glow glow-pink"></div>
+            </div>
+            <div class="artist-circle artist-circle--dj">
+              <img src="public/images/dj.jpg" alt="DJ performer">
+              <div class="circle-glow glow-purple"></div>
+            </div>
+            <div class="artist-circle artist-circle--male-performer">
+              <img src="public/images/comedian.jpg" alt="Male performer">
+              <div class="circle-glow glow-blue"></div>
+            </div>
+            <div class="artist-circle artist-circle--dancer">
+              <img src="public/images/makeup.jpg" alt="Dancer performer">
+              <div class="circle-glow glow-orange"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT / NOTIFY ME (placeholder — not implemented yet) ============ -->
+  <section class="section-placeholder" id="contact"></section>
+</main>
+
+<!-- ============ FOOTER (placeholder — not implemented yet) ============ -->
+<footer class="footer-placeholder"></footer>
+
+<script src="script.js"></script>
+</body>
+</html>
