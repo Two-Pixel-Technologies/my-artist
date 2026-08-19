@@ -2913,7 +2913,7 @@ main > section[id] { scroll-margin-top: 80px; }
 @media (min-width: 1024px) {
   .container { padding-inline: 32px; }
   html { scroll-padding-top: 96px; }
-  main > section[id] { scroll-margin-top: -7px; }
+  main > section[id] { scroll-margin-top: -58px; }
 }
 
 @media (max-width: 767px) {
@@ -4398,5 +4398,131 @@ main > section[id] { scroll-margin-top: 80px; }
   .about .orbit-node--magicians { top: 78%; left: 20%; }
   .about .orbit-node--makeup { top: 78%; left: 80%; }
   .about .orbit-node--dancers { top: 85%; left: 50%; }
+}
+
+/* Large-desktop only: keep the hiring copy and its five-card showcase as one centered composition. */
+@media (min-width: 1440px) {
+  .hiring__main {
+    width: 100%;
+    max-width: var(--container-w);
+    margin-inline: auto;
+    grid-template-columns: 400px max-content;
+    column-gap: 40px;
+    justify-content: space-between;
+  }
+
+  .hiring__main .event-showcase {
+    width: max-content;
+    justify-self: end;
+  }
+}
+
+/* Tablet-only alignment and composition corrections. */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Match the same shared container/gutters used by the neighboring sections. */
+  .artists .artists__inner {
+    width: 100%;
+    max-width: var(--container-w);
+    margin-inline: auto;
+    padding-inline: var(--sp-6);
+  }
+
+  .artists .artists__content,
+  .artists .artists__features {
+    width: 100%;
+    max-width: none;
+    justify-self: stretch;
+    padding-inline: 0;
+  }
+
+  /* Four readable Contact benefits, without text escaping their glass pills. */
+  .notify__badges {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px 10px;
+    width: 100%;
+  }
+
+  .notify-badge {
+    min-height: 44px;
+    padding: 8px 10px;
+    gap: 6px;
+    white-space: normal;
+  }
+
+  .notify-badge span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    white-space: normal;
+    line-height: 1.2;
+  }
+
+  /* Rebalance the five-image collage so frames only meet at their edges. */
+  .hero__visual {
+    overflow: visible;
+  }
+
+  .photo-collage {
+    width: min(100%, 340px);
+    height: 390px;
+    transform: rotate(6deg) scale(.92);
+  }
+
+  .photo-card--singer {
+    position: absolute;
+    top: 40px;
+    left: calc(50% - 85px);
+    width: 170px;
+    height: 260px;
+  }
+
+  .photo-card--guitarist,
+  .photo-card--dj {
+    top: 95px;
+    width: 102px;
+    height: 142px;
+  }
+
+  .photo-card--guitarist { left: -18px; }
+  .photo-card--dj { right: -18px; }
+
+  .photo-card--comedian,
+  .photo-card--makeup {
+    top: 250px;
+    bottom: auto;
+    width: 102px;
+    height: 130px;
+  }
+
+  .photo-card--comedian { left: 8px; }
+  .photo-card--makeup { right: 8px; }
+
+  /* Eight labels are distributed around the card perimeter, never beneath the visual. */
+  .hero__visual .cat-badge { z-index: 30; }
+  .hero__visual .cat-badge--singers { top: 12px; left: 50%; }
+  .hero__visual .cat-badge--musicians { top: 62px; left: 0; }
+  .hero__visual .cat-badge--hosts { top: 62px; right: 0; left: auto; }
+  .hero__visual .cat-badge--magicians { top: 172px; right: auto; bottom: auto; left: 0; }
+  .hero__visual .cat-badge--djs { top: 172px; right: 0; bottom: auto; left: auto; }
+  .hero__visual .cat-badge--comedians { top: 315px; right: auto; bottom: auto; left: 0; }
+  .hero__visual .cat-badge--makeup { top: 315px; right: 0; bottom: auto; left: auto; }
+  .hero__visual .cat-badge--dancers { top: 400px; right: auto; bottom: auto; left: 50%; }
+}
+
+/* Mobile-only: preserve the orbit geometry while centering the full visual and its anchor targets. */
+@media (max-width: 767px) {
+  html {
+    scroll-padding-top: 64px;
+  }
+
+  main > section[id] {
+    scroll-margin-top: 0;
+  }
+
+  .about .ecosystem-orbit {
+    width: min(92vw, 420px, calc(100vw - 48px));
+    max-width: calc(100vw - 48px);
+    justify-self: center;
+    margin-inline: auto;
+  }
 }
 
