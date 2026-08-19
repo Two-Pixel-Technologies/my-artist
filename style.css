@@ -758,6 +758,50 @@ body {
   box-shadow: 0 11px 30px rgba(46, 204, 154, 0.24);
 }
 
+.hiring__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn--whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 42px;
+  padding: 10px 16px;
+  border: 1px solid rgba(71, 201, 159, .52);
+  border-radius: var(--radius-pill);
+  background: rgba(12, 28, 28, .5);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 6px 16px rgba(0,0,0,.14);
+  color: var(--color-text);
+  font-size: .72rem;
+  font-weight: 600;
+  line-height: 1;
+  transition: transform .25s var(--ease-premium), border-color .25s var(--ease-premium), box-shadow .25s var(--ease-premium), background .25s var(--ease-premium);
+  white-space: nowrap;
+}
+
+.btn--whatsapp svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: #f7f5ef;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, .18));
+}
+
+.btn--whatsapp:hover {
+  transform: translateY(-2px);
+  border-color: rgba(98, 221, 180, .82);
+  background: rgba(19, 54, 48, .48);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 10px 21px rgba(46, 204, 154, .14);
+}
+
 .event-showcase {
   position: relative;
   z-index: 1;
@@ -3401,5 +3445,872 @@ main > section[id] { scroll-margin-top: 80px; }
   .hero__visual {
     min-height: 380px;
   }
+}
+
+/* ---------- Final sitewide refinement: fluid canvas, retained compositions ---------- */
+/* Preserve the 1280px composition, then open the canvas progressively for wider displays. */
+@media (min-width: 1440px) {
+  :root { --container-w: 1420px; }
+  .container,
+  .navbar .navbar__inner { max-width: 1420px; padding-inline: 40px; }
+}
+
+@media (min-width: 1600px) {
+  :root { --container-w: 1520px; }
+  .container,
+  .navbar .navbar__inner { max-width: 1520px; padding-inline: 48px; }
+}
+
+@media (min-width: 1920px) {
+  :root { --container-w: 1580px; }
+  .container,
+  .navbar .navbar__inner { max-width: 1580px; padding-inline: 52px; }
+}
+
+/* The additional labels complete the collage perimeter without covering portraits. */
+.hero__visual { isolation: isolate; }
+.cat-badge--singers { top: 4px; left: 42%; animation-delay: .6s; }
+.cat-badge--magicians { top: 46%; left: -18px; animation-delay: 1.8s; }
+.cat-badge--dancers { bottom: 4px; left: 0; animation-delay: 2.8s; }
+.cat-badge--djs { bottom: 4px; right: 0; animation-delay: 3.7s; }
+
+/* Three meaningful statistics retain the original rhythm without an empty slot. */
+.about .stats {
+  grid-template-columns: repeat(3, minmax(92px, max-content));
+  max-width: 430px;
+  column-gap: clamp(22px, 3vw, 38px);
+}
+
+/* A subtle glass surface gives the category visual depth without changing its fan geometry. */
+.about .wheel-wrap {
+  isolation: isolate;
+  border-radius: 46% 46% 30% 30%;
+}
+
+.about .wheel-wrap::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: min(88%, 540px);
+  height: 72%;
+  top: 7%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid rgba(189, 163, 255, .12);
+  border-radius: 48% 48% 30% 30%;
+  background:
+    radial-gradient(circle at 50% 83%, rgba(237, 80, 145, .12), transparent 38%),
+    linear-gradient(145deg, rgba(42, 37, 67, .28), rgba(9, 10, 18, .03) 66%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .045), 0 20px 45px rgba(0, 0, 0, .16);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.about-wheel {
+  filter: drop-shadow(0 18px 28px rgba(0, 0, 0, .24));
+}
+
+.wheel-panel path {
+  stroke: rgba(248, 245, 255, .2);
+  stroke-width: 1.12px;
+}
+
+@media (min-width: 980px) {
+  .wheel-wrap {
+    min-height: 404px;
+    transform: translateY(15px) scale(1.03);
+  }
+
+  .about-wheel { width: min(100%, 580px); }
+}
+
+/* The artists section carries the alternating visual-left / content-right cadence on wider screens. */
+@media (min-width: 1200px) {
+  .artists__inner {
+    grid-template-columns: minmax(390px, 1.22fr) minmax(230px, .74fr) minmax(220px, .7fr);
+    gap: clamp(26px, 2.6vw, 46px);
+  }
+
+  .artists__visual { grid-column: 1; grid-row: 1; }
+  .artists__content { grid-column: 2; grid-row: 1; }
+  .artists__features { grid-column: 3; grid-row: 1; }
+}
+
+/* Larger, recognisable map outline stays atmospheric; profiles and routes remain the foreground. */
+.artists .world-map-container { overflow: visible; }
+.artists .world-map-svg {
+  transform: scale(1.045);
+  transform-origin: center;
+}
+.artists .world-map-svg .world-map-continents { opacity: .38; }
+.artists .world-map-svg .world-map-continents path {
+  fill: url(#artistMapDots) !important;
+  stroke: rgba(76, 210, 207, .78) !important;
+  stroke-width: 1.35px !important;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 4px rgba(73, 179, 214, .18));
+}
+.artist-network__lines path {
+  stroke: rgba(184, 202, 255, .43);
+  stroke-width: 1.25px;
+}
+
+@media (max-width: 767px) {
+  .hero__visual { min-height: 350px; padding-bottom: 42px; }
+  .cat-badge {
+    display: inline-flex !important;
+    padding: 4px 7px;
+    gap: 4px;
+    font-size: .52rem;
+    line-height: 1;
+  }
+  .cat-badge__icon { font-size: .66rem; }
+  .cat-badge--musicians { top: -4px; left: 0; }
+  .cat-badge--singers { top: -4px; left: 50%; transform: translateX(-50%); }
+  .cat-badge--hosts { top: -4px; right: 0; }
+  .cat-badge--magicians { top: 244px; left: 0; }
+  .cat-badge--dancers { top: 244px; bottom: auto; left: 50%; transform: translateX(-50%); }
+  .cat-badge--djs { top: 244px; right: 0; bottom: auto; }
+  .cat-badge--comedians { top: 278px; bottom: auto; left: 9%; }
+  .cat-badge--makeup { top: 278px; right: 9%; bottom: auto; }
+
+  .about .stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    max-width: 360px;
+    column-gap: 12px;
+  }
+
+  .artists .world-map-svg { transform: scale(1.01); }
+}
+
+/* Keep every desktop collage label in the negative space around its card, not over imagery. */
+@media (min-width: 768px) {
+  .cat-badge--musicians { top: 0; left: 0; }
+  .cat-badge--hosts { top: 0; right: 0; }
+  .cat-badge--magicians { top: 200px; left: -140px; }
+  .cat-badge--comedians { top: 260px; bottom: auto; left: -142px; }
+  .cat-badge--makeup { top: auto; bottom: -12px; right: 165px; }
+  .cat-badge--dancers { bottom: -12px; left: 0; }
+  .cat-badge--djs { bottom: -12px; right: 0; }
+}
+
+/* Five event cards still read as a single compact showcase at the tablet desktop edge. */
+@media (min-width: 980px) and (max-width: 1199px) {
+  .event-showcase { gap: 6px; }
+  .event-card { width: 88px; height: 230px; flex: 0 0 88px; }
+  .event-card h3 { font-size: .61rem; }
+  .event-card p { font-size: .45rem; }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .cat-badge--hosts,
+  .cat-badge--singers { top: -18px; }
+  .cat-badge--comedians { top: 232px; }
+}
+
+@media (min-width: 1200px) {
+  .cat-badge--comedians { top: 240px; }
+}
+
+@media (max-width: 767px) {
+  .cat-badge--magicians,
+  .cat-badge--dancers,
+  .cat-badge--djs { top: 260px; }
+  .cat-badge--comedians,
+  .cat-badge--makeup { top: 286px; }
+}
+
+/* ---------- Targeted alignment corrections ---------- */
+/* The Artists wrapper is a full-width flex item; its shared container now centers at every zoom level. */
+.artists__wrapper {
+  width: 100%;
+  flex: 0 0 100%;
+}
+
+.artists__inner {
+  width: 100%;
+  max-width: var(--container-w);
+  margin-inline: auto;
+}
+
+/* About alternates the desktop rhythm: visual left, editorial copy right. */
+@media (min-width: 1024px) {
+  .about__inner {
+    grid-template-columns: minmax(0, 1.08fr) minmax(420px, .92fr);
+    gap: clamp(36px, 5vw, 82px);
+    align-items: center;
+  }
+
+  .about .wheel-wrap {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: center;
+    min-height: 390px;
+    transform: translateY(8px) scale(1);
+    transform-origin: center left;
+  }
+
+  .about__content {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: start;
+    text-align: left;
+  }
+}
+
+/* The wheel keeps its local segment colour, without a backdrop slab or global shadow. */
+.about .wheel-wrap::before { content: none; }
+.about-wheel { filter: none; }
+
+@media (max-width: 1023px) {
+  .about__inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .about__content { order: 1; }
+  .about .wheel-wrap {
+    order: 2;
+    transform: none;
+  }
+}
+
+/* All Hero labels remain in the top/side orbit of the collage on desktop. */
+@media (min-width: 1200px) {
+  .cat-badge--musicians { top: 20px; left: 430px; }
+  .cat-badge--singers { top: 50px; left: 42%; }
+  .cat-badge--hosts { top: 230px; right: -32px; }
+  .cat-badge--makeup { top: 420px; bottom: auto; left: 80%; right: auto; }
+  .cat-badge--dancers { top: 400px; bottom: auto; left: 40%; }
+  .cat-badge--magicians { top: 75px; left: -80px; }
+  .cat-badge--djs { top: 400px; bottom: auto; left: -80px; right: auto; }
+  .cat-badge--comedians { top: 245px; bottom: auto; left: -102px; }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .cat-badge--musicians { top: -4px; left: 0; }
+  .cat-badge--singers { top: -4px; left: 39%; }
+  .cat-badge--hosts { top: -4px; right: 0; }
+  .cat-badge--makeup { top: 36px; bottom: auto; left: 17%; right: auto; }
+  .cat-badge--dancers { top: 36px; bottom: auto; left: 50%; }
+  .cat-badge--magicians { top: 100px; left: -136px; }
+  .cat-badge--djs { top: 144px; bottom: auto; left: -136px; right: auto; }
+  .cat-badge--comedians { top: 188px; bottom: auto; left: -136px; }
+}
+
+@media (max-width: 767px) {
+  .hero__visual { min-height: 410px; }
+  .photo-collage { transform: translateY(48px) rotate(6deg) scale(.9); }
+  .cat-badge--musicians { top: 0; left: 0; }
+  .cat-badge--singers { top: 0; left: 50%; }
+  .cat-badge--hosts { top: 0; right: 0; }
+  .cat-badge--magicians { top: 26px; left: 0; }
+  .cat-badge--djs { top: 26px; left: 50%; right: auto; }
+  .cat-badge--makeup { top: 26px; right: 0; }
+  .cat-badge--comedians { top: 52px; left: 9%; }
+  .cat-badge--dancers { top: 52px; left: auto; right: 9%; }
+}
+
+/* ---------- Targeted hiring-strip and About-wheel polish ---------- */
+.trust-item {
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.trust-item b {
+  width: 30px;
+  height: 30px;
+  flex-basis: 30px;
+  font-size: .9rem;
+}
+
+.trust-item span { gap: 3px; max-width: 175px; }
+.trust-item strong { font-size: .69rem; line-height: 1.25; }
+.trust-item small { font-size: .58rem; line-height: 1.4; }
+
+@media (max-width: 640px) {
+  .trust-item { gap: 10px; }
+  .trust-item b { width: 29px; height: 29px; flex-basis: 29px; }
+  .trust-item strong { font-size: .68rem; }
+  .trust-item small { font-size: .57rem; }
+}
+
+/* Increase the wheel's visual weight while retaining the established two-column composition. */
+@media (min-width: 1440px) {
+  .about .wheel-wrap {
+    min-height: 430px;
+    transform: translateY(4px) scale(1.13);
+    transform-origin: center left;
+  }
+  .about .about-wheel { width: min(100%, 600px); }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .about .wheel-wrap {
+    min-height: 414px;
+    transform: translateY(4px) scale(1.08);
+    transform-origin: center left;
+  }
+  .about .about-wheel { width: min(100%, 535px); }
+}
+
+/* Glass segments: restrained colour, smoother seams, highlights and controlled depth. */
+.about-wheel .wheel-panel path {
+  fill-opacity: .9;
+  stroke: color-mix(in srgb, var(--wheel-glow) 58%, rgba(255, 255, 255, .24));
+  stroke-width: 1px;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 5px 9px rgba(0, 0, 0, .2)) drop-shadow(0 0 7px color-mix(in srgb, var(--wheel-glow) 22%, transparent));
+}
+
+.about-wheel .wheel-panel:hover path {
+  stroke-width: 1.2px;
+  filter: drop-shadow(0 6px 11px rgba(0, 0, 0, .22)) drop-shadow(0 0 11px color-mix(in srgb, var(--wheel-glow) 36%, transparent));
+}
+
+.about-wheel .wheel-label {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, .65);
+}
+
+.about-wheel .wheel-label svg {
+  filter: drop-shadow(0 0 5px currentColor);
+}
+
+.wheel-hub-bloom { opacity: .36; }
+.wheel-hub-shape {
+  stroke: rgba(255, 177, 198, .72);
+  stroke-width: 1.1px;
+  filter: drop-shadow(0 7px 15px rgba(235, 79, 127, .28));
+}
+
+.wheel-hub-content__icon {
+  border-color: rgba(255, 184, 205, .76);
+  background: radial-gradient(circle at 38% 18%, rgba(255,255,255,.3), rgba(246, 100, 146, .16) 62%, rgba(27, 13, 27, .38));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 0 16px rgba(255, 103, 150, .38);
+}
+
+.wheel-hub-content small {
+  color: rgba(246, 230, 237, .82);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, .55);
+}
+
+/* Final About-wheel refinement: a slightly stronger silhouette with quieter glass seams. */
+@media (min-width: 1440px) {
+  .about .wheel-wrap {
+    transform: translateY(4px) scale(1.16);
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .about .wheel-wrap {
+    transform: translateY(4px) scale(1.12);
+  }
+}
+
+.about-wheel .wheel-panel path {
+  fill-opacity: .86;
+  stroke: color-mix(in srgb, var(--wheel-glow) 38%, rgba(255, 255, 255, .2));
+  stroke-opacity: .66;
+  stroke-width: .72px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  paint-order: stroke fill;
+  filter:
+    drop-shadow(0 4px 8px rgba(0, 0, 0, .16))
+    drop-shadow(0 0 6px color-mix(in srgb, var(--wheel-glow) 16%, transparent));
+}
+
+.about-wheel .wheel-panel:hover path {
+  stroke-opacity: .84;
+  stroke-width: .92px;
+  filter:
+    drop-shadow(0 5px 9px rgba(0, 0, 0, .18))
+    drop-shadow(0 0 9px color-mix(in srgb, var(--wheel-glow) 28%, transparent));
+}
+
+.about-wheel .wheel-label {
+  border-radius: 12px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, .72), 0 0 7px color-mix(in srgb, var(--wheel-glow) 15%, transparent);
+}
+
+.wheel-hub-bloom { opacity: .3; }
+
+.wheel-hub-shape {
+  fill-opacity: .92;
+  stroke: rgba(255, 184, 204, .5);
+  stroke-width: .82px;
+  filter:
+    drop-shadow(0 6px 13px rgba(235, 79, 127, .18))
+    drop-shadow(0 0 10px rgba(255, 132, 91, .12));
+}
+
+.wheel-hub-content__icon {
+  background:
+    radial-gradient(circle at 35% 18%, rgba(255, 255, 255, .34), rgba(255, 137, 169, .17) 48%, rgba(29, 14, 29, .44) 100%);
+  border-color: rgba(255, 193, 210, .62);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .24),
+    inset 0 -10px 18px rgba(67, 13, 37, .12),
+    0 0 14px rgba(255, 103, 150, .28);
+}
+
+/* Keep the fan centred in its own grid column; the existing 12-16% scale is intentional. */
+@media (min-width: 1024px) {
+  .about .wheel-wrap {
+    align-self: center;
+    justify-self: center;
+  }
+}
+
+/* Always-on illuminated glass â€” hover only adds a restrained finishing lift. */
+.about-wheel .wheel-panel {
+  filter:
+    brightness(1.035)
+    saturate(1.1)
+    drop-shadow(0 3px 7px rgba(0, 0, 0, .14))
+    drop-shadow(0 0 9px color-mix(in srgb, var(--wheel-glow) 21%, transparent));
+}
+
+.about-wheel .wheel-panel path {
+  fill-opacity: .84;
+  stroke: color-mix(in srgb, var(--wheel-glow) 31%, rgba(255, 255, 255, .18));
+  stroke-opacity: .52;
+  stroke-width: .58px;
+  vector-effect: non-scaling-stroke;
+  filter:
+    drop-shadow(0 2px 5px rgba(0, 0, 0, .11))
+    drop-shadow(0 0 9px color-mix(in srgb, var(--wheel-glow) 21%, transparent));
+}
+
+.about-wheel .wheel-panel:hover {
+  transform: scale(1.012);
+  filter:
+    brightness(1.085)
+    saturate(1.18)
+    drop-shadow(0 4px 9px rgba(0, 0, 0, .17))
+    drop-shadow(0 0 13px color-mix(in srgb, var(--wheel-glow) 31%, transparent));
+}
+
+.about-wheel .wheel-panel:hover path {
+  stroke-opacity: .64;
+  stroke-width: .7px;
+}
+
+.about-wheel .wheel-label {
+  text-shadow:
+    0 1px 3px rgba(0, 0, 0, .78),
+    0 0 8px color-mix(in srgb, var(--wheel-glow) 22%, transparent);
+}
+
+/* ---------- About ecosystem orbit replacement ---------- */
+.about {
+  min-height: 0;
+  padding: clamp(62px, 6vw, 86px) 0;
+  display: block;
+}
+
+.about .about__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.16fr) minmax(340px, .84fr);
+  align-items: center;
+  gap: clamp(40px, 5vw, 78px);
+}
+
+.about .about__content {
+  grid-column: 2;
+  grid-row: 1;
+  order: initial;
+  justify-self: start;
+  width: min(100%, 430px);
+  max-width: 430px;
+  text-align: left;
+}
+
+.about .about__heading {
+  margin-bottom: 18px;
+  font-size: clamp(2.55rem, 3.45vw, 3.45rem);
+  line-height: 1.05;
+}
+
+.about .about__paragraph {
+  margin-bottom: 25px;
+  color: rgba(238, 235, 230, .76);
+  font-size: clamp(.88rem, 1.05vw, 1rem);
+  line-height: 1.62;
+}
+
+.about__accent {
+  color: #63d8c0;
+  text-shadow: 0 0 14px rgba(99, 216, 192, .12);
+}
+
+.about .about__cta {
+  min-height: 42px;
+  padding-inline: 18px;
+  border-color: rgba(224, 219, 232, .3);
+  background: rgba(17, 17, 28, .42);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 7px 18px rgba(0,0,0,.13);
+  font-size: .76rem;
+}
+
+.ecosystem-orbit {
+  position: relative;
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: center;
+  width: min(100%, 620px);
+  min-height: 460px;
+  aspect-ratio: 1.28;
+  isolation: isolate;
+}
+
+.ecosystem-orbit__ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.ecosystem-orbit__ring--outer {
+  width: 70%;
+  height: 82%;
+  transform: translate(-50%, -50%);
+  border: 1px dashed rgba(144, 162, 210, .25);
+  box-shadow: inset 0 0 24px rgba(69, 112, 174, .05), 0 0 20px rgba(93, 80, 177, .05);
+}
+
+.ecosystem-orbit__ring--inner {
+  width: 46%;
+  height: 54%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(173, 151, 230, .16);
+  box-shadow: inset 0 0 18px rgba(246, 114, 135, .035);
+}
+
+.ecosystem-orbit__point {
+  position: absolute;
+  z-index: 1;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #e5b6ff;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.ecosystem-orbit__point--one { top: 19%; left: 29%; color: #7fe6d0; background: #7fe6d0; }
+.ecosystem-orbit__point--two { top: 29%; right: 21%; color: #f6d475; background: #f6d475; }
+.ecosystem-orbit__point--three { right: 25%; bottom: 24%; color: #f291c5; background: #f291c5; }
+
+.ecosystem-hub {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: clamp(156px, 30%, 188px);
+  aspect-ratio: 1;
+  place-content: center;
+  border: 1px solid rgba(226, 176, 221, .32);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 38% 25%, rgba(240, 159, 255, .12), transparent 36%),
+    radial-gradient(circle at 72% 75%, rgba(255, 151, 77, .12), transparent 42%),
+    rgba(10, 11, 19, .68);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.11), 0 0 25px rgba(191, 108, 214, .08), 0 0 30px rgba(255, 136, 81, .06);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+}
+
+.ecosystem-hub strong {
+  color: #f5f2ee;
+  font-size: clamp(1.16rem, 2vw, 1.42rem);
+  font-family: var(--font-display);
+  line-height: 1;
+  letter-spacing: -.035em;
+}
+
+.ecosystem-hub strong span { color: var(--orange); }
+.ecosystem-hub p { margin: 12px 0 0; color: rgba(232, 227, 231, .8); font-size: .65rem; line-height: 1.45; }
+
+.orbit-node {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(247, 244, 240, .88);
+  font-size: clamp(.62rem, 1.15vw, .73rem);
+  font-weight: 600;
+  line-height: 1.2;
+  text-shadow: 0 1px 4px rgba(0,0,0,.7);
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+  transition: transform .28s var(--ease-premium), filter .28s ease;
+}
+
+.orbit-node__icon {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--node-accent) 48%, rgba(255,255,255,.2));
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 24%, rgba(255,255,255,.14), rgba(13, 15, 25, .82) 70%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 0 13px color-mix(in srgb, var(--node-accent) 20%, transparent);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+.orbit-node svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: var(--node-accent);
+  stroke-width: 1.65;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--node-accent) 55%, transparent));
+}
+
+.orbit-node--musicians { top: 10%; left: 50%; flex-direction: column; gap: 5px; }
+.orbit-node--comedians { top: 20%; left: 80%; }
+.orbit-node--hosts { top: 52%; left: 92%; }
+.orbit-node--makeup { top: 81%; left: 80%; }
+.orbit-node--dancers { top: 89%; left: 50%; flex-direction: column-reverse; gap: 5px; }
+.orbit-node--magicians { top: 81%; left: 22%; flex-direction: row-reverse; }
+.orbit-node--djs { top: 52%; left: 12%; flex-direction: row-reverse; }
+.orbit-node--singers { top: 20%; left: 20%; flex-direction: row-reverse; }
+
+@media (hover: hover) {
+  .orbit-node:hover {
+    filter: brightness(1.16) saturate(1.18) drop-shadow(0 0 9px color-mix(in srgb, var(--node-accent) 38%, transparent));
+    transform: translate(-50%, -50%) scale(1.045);
+  }
+}
+
+@media (max-width: 1023px) {
+  .about { padding-block: 62px; }
+  .about .about__inner { grid-template-columns: 1fr; gap: 34px; }
+  .about .about__content { grid-column: auto; grid-row: auto; order: 1; justify-self: center; max-width: 540px; text-align: center; }
+  .ecosystem-orbit { grid-column: auto; grid-row: auto; order: 2; width: min(100%, 590px); min-height: 430px; }
+}
+
+@media (max-width: 640px) {
+  .about { padding-block: 54px; }
+  .about .about__heading { font-size: clamp(2.25rem, 11vw, 2.8rem); }
+  .about .about__paragraph br { display: none; }
+  .ecosystem-orbit { min-height: 285px; width: min(100%, 300px); }
+  .ecosystem-orbit__ring--outer { width: 64%; height: 76%; }
+  .ecosystem-orbit__ring--inner { width: 42%; height: 50%; }
+  .ecosystem-hub { width: 38%; }
+  .ecosystem-hub strong { font-size: 1rem; }
+  .ecosystem-hub p { margin-top: 8px; font-size: .49rem; }
+  .orbit-node { gap: 5px; font-size: .52rem; }
+  .orbit-node__icon { width: 31px; height: 31px; flex-basis: 31px; }
+  .orbit-node svg { width: 15px; height: 15px; }
+  .orbit-node--comedians { left: 82%; }
+  .orbit-node--hosts { left: 83%; }
+  .orbit-node--makeup { left: 79%; }
+}
+
+/* ---------- For Artists: supplied artist-network SVG ---------- */
+@media (min-width: 1024px) {
+  .artists .artists__inner {
+    grid-template-columns: minmax(0, 1.24fr) minmax(220px, .7fr) minmax(280px, 1fr);
+    align-items: center;
+    gap: clamp(28px, 3vw, 48px);
+  }
+
+  .artists .artists__visual {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+    justify-self: center;
+  }
+
+  .artists .artists__content {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+  }
+
+  .artists .artists__features {
+    grid-column: 3;
+    grid-row: 1;
+    align-self: center;
+  }
+}
+
+.artists .artists__visual {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  place-items: center;
+  overflow: visible;
+}
+
+.artists__network-svg {
+  display: block;
+  width: min(100%, 620px);
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 1023px) {
+  .artists .artists__inner {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .artists .artists__content { grid-column: auto; grid-row: auto; order: 1; }
+  .artists .artists__features { grid-column: auto; grid-row: auto; order: 2; }
+  .artists .artists__visual { grid-column: auto; grid-row: auto; order: 3; width: min(100%, 620px); justify-self: center; }
+}
+
+@media (max-width: 640px) {
+  .artists .artists__visual { width: min(100%, 360px); }
+  .artists__network-svg { width: 100%; }
+}
+
+/* For Artists map refinement: the supplied SVG now fills the visual column with a larger, clearer world composition. */
+@media (min-width: 1024px) {
+  .artists .artists__visual {
+    min-height: 440px;
+  }
+
+  .artists__network-svg {
+    width: calc(100% + 32px);
+    max-width: 590px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .artists .artists__visual {
+    min-height: 0;
+  }
+
+  .artists__network-svg {
+    width: 100%;
+    max-width: 620px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hiring__ctas {
+    justify-content: center;
+  }
+
+  .hiring__ctas .btn {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 420px) {
+  .hiring__ctas .btn {
+    width: 100%;
+  }
+}
+
+/* Targeted responsive polish: keep the brand glyph aligned without changing the CTA treatment. */
+.btn--whatsapp .whatsapp-icon {
+  display: block;
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* The About story becomes a centered reading block only once its columns stack. */
+@media (max-width: 1023px) {
+  .about .about__inner {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .about .about__content {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    width: min(540px, calc(100vw - 48px));
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .about .about__content > * {
+    margin-inline: auto;
+  }
+
+  .about .stats {
+    justify-content: center;
+  }
+
+  .about .stat {
+    align-items: center;
+    text-align: center;
+  }
+
+  .about .ecosystem-orbit {
+    justify-self: center;
+    margin-inline: auto;
+  }
+}
+
+/* Keep all eight artist badges in a deliberate orbit around the mobile collage. */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .hero__visual {
+    overflow: visible;
+  }
+
+  .hero__visual .cat-badge {
+    z-index: 30;
+  }
+
+  .hero__visual .cat-badge--musicians { top: 58px; left: 4px; }
+  .hero__visual .cat-badge--singers { top: 0; left: 47%; }
+  .hero__visual .cat-badge--hosts { top: 48px; right: 0; left: auto; }
+  .hero__visual .cat-badge--magicians { top: 160px; right: auto; bottom: auto; left: -122px; }
+  .hero__visual .cat-badge--comedians { top: 250px; right: auto; bottom: auto; left: -134px; }
+  .hero__visual .cat-badge--djs { top: 360px; right: auto; bottom: auto; left: -102px; }
+  .hero__visual .cat-badge--dancers { top: 415px; right: auto; bottom: auto; left: 20px; }
+  .hero__visual .cat-badge--makeup { top: 400px; right: 0; bottom: auto; left: auto; }
+}
+
+@media (max-width: 767px) {
+  .about .about__content {
+    justify-self: start;
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .hero__visual {
+    min-height: 420px;
+    overflow: visible;
+  }
+
+  .hero__visual .cat-badge {
+    z-index: 30;
+  }
+
+  .hero__visual .cat-badge--musicians { top: 118px; left: 0; }
+  .hero__visual .cat-badge--singers { top: 76px; left: 50%; }
+  .hero__visual .cat-badge--hosts { top: 136px; right: 0; left: auto; }
+  .hero__visual .cat-badge--magicians { top: 330px; right: auto; bottom: auto; left: 0; }
+  .hero__visual .cat-badge--makeup { top: 344px; right: 0; bottom: auto; left: auto; }
+  .hero__visual .cat-badge--comedians { top: 356px; right: auto; bottom: auto; left: 6%; }
+  .hero__visual .cat-badge--djs { top: 370px; right: 8%; bottom: auto; left: auto; }
+  .hero__visual .cat-badge--dancers { top: 374px; right: auto; bottom: auto; left: 50%; }
 }
 

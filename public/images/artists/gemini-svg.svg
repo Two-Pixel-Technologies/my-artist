@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 500" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="network-title network-desc">
+  <title id="network-title">A connected network of artists around a world map</title>
+  <desc id="network-desc">Five Indian event artists connected across a stylised world map.</desc>
+  <defs>
+    <pattern id="continentDots" width="7" height="7" patternUnits="userSpaceOnUse">
+      <circle cx="3.5" cy="3.5" r=".9" fill="#46748a"/>
+    </pattern>
+    <linearGradient id="mapWash" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#102945" stop-opacity=".36"/>
+      <stop offset=".56" stop-color="#10233c" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#1b1634" stop-opacity=".15"/>
+    </linearGradient>
+    <radialGradient id="mapAura" cx="50%" cy="44%" r="58%">
+      <stop stop-color="#0b4055" stop-opacity=".15"/>
+      <stop offset=".62" stop-color="#071727" stop-opacity=".05"/>
+      <stop offset="1" stop-color="#070914" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="routeOne" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#42e1d1"/><stop offset="1" stop-color="#ca74ff"/></linearGradient>
+    <linearGradient id="routeTwo" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff9d52"/><stop offset="1" stop-color="#ff5ca8"/></linearGradient>
+    <filter id="mapGlow" x="-12%" y="-15%" width="124%" height="130%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="softGlow" x="-45%" y="-45%" width="190%" height="190%"><feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#53dce2" flood-opacity=".42"/><feDropShadow dx="0" dy="3" stdDeviation="7" flood-color="#03050b" flood-opacity=".85"/></filter>
+    <filter id="pinkGlow" x="-45%" y="-45%" width="190%" height="190%"><feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#fa63a5" flood-opacity=".5"/><feDropShadow dx="0" dy="3" stdDeviation="7" flood-color="#03050b" flood-opacity=".85"/></filter>
+    <filter id="amberGlow" x="-45%" y="-45%" width="190%" height="190%"><feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#ffad58" flood-opacity=".48"/><feDropShadow dx="0" dy="3" stdDeviation="7" flood-color="#03050b" flood-opacity=".85"/></filter>
+    <filter id="violetGlow" x="-45%" y="-45%" width="190%" height="190%"><feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#b97aff" flood-opacity=".48"/><feDropShadow dx="0" dy="3" stdDeviation="7" flood-color="#03050b" flood-opacity=".85"/></filter>
+    <filter id="pinGlow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="2.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <clipPath id="clipGuitar"><circle cx="118" cy="111" r="47"/></clipPath>
+    <clipPath id="clipSinger"><circle cx="580" cy="111" r="50"/></clipPath>
+    <clipPath id="clipHost"><circle cx="349" cy="246" r="64"/></clipPath>
+    <clipPath id="clipDj"><circle cx="165" cy="390" r="47"/></clipPath>
+    <clipPath id="clipDancer"><circle cx="551" cy="380" r="50"/></clipPath>
+    <style>
+      .artist-frame { opacity: 0; transform-box: fill-box; transform-origin: center; transition: filter .32s ease, transform .32s ease; animation: artist-reveal .72s cubic-bezier(.2,.75,.2,1) forwards, artist-float 6.4s ease-in-out 1s infinite; }
+      .artist-frame--singer { animation-delay: .1s, 1.2s; }
+      .artist-frame--performer { animation-delay: .2s, .7s; }
+      .artist-frame--dj { animation-delay: .3s, 1.7s; }
+      .artist-frame--dancer { animation-delay: .4s, .3s; }
+      .artist-frame:hover { transform: scale(1.045); filter: brightness(1.1) saturate(1.12); }
+      @keyframes artist-reveal { from { opacity: 0; transform: scale(.93); } to { opacity: 1; transform: scale(1); } }
+      @keyframes artist-float { 0%,100% { translate: 0 0; } 50% { translate: 0 -4px; } }
+      @media (prefers-reduced-motion: reduce) { .artist-frame { opacity: 1; animation: none; transition: none; } }
+    </style>
+  </defs>
+
+  <ellipse cx="350" cy="255" rx="332" ry="223" fill="url(#mapAura)"/>
+
+  <!-- Recognisable world-map continents: dotted body plus fine teal contour. -->
+  <g fill="url(#continentDots)" stroke="#5d99ae" stroke-opacity=".46" stroke-width="1.1" stroke-linejoin="round" opacity=".3">
+    <!-- North America + Greenland -->
+    <path d="M42 132 C53 113 61 97 82 90 C102 81 123 77 145 84 C158 88 174 96 179 106 C183 117 172 125 160 130 C151 135 146 142 142 151 C137 165 125 174 112 172 C100 170 98 161 88 159 L65 157 C53 153 44 144 42 132Z"/>
+    <path d="M168 57 199 48 220 59 208 73 182 72Z"/>
+    <!-- Central America -->
+    <path d="M138 177 C150 177 161 179 169 185 C175 189 180 197 179 201 C176 207 170 212 165 211 C159 207 155 202 147 200Z"/>
+    <!-- South America -->
+    <path d="M166 218 C179 215 192 219 202 229 C213 241 218 255 216 271 C213 289 204 307 197 322 C191 338 182 354 171 363 C164 356 160 343 158 330 C157 313 154 298 149 282 C145 267 145 251 151 237 C155 228 159 222 166 218Z"/>
+    <!-- Europe -->
+    <path d="M300 103 C307 94 317 88 327 87 C340 87 354 91 363 98 C370 103 375 112 374 117 C371 126 365 133 357 135 C348 138 339 135 332 137 C322 135 313 130 310 124Z"/>
+    <!-- Africa -->
+    <path d="M307 150 C318 146 335 142 347 144 C361 147 374 155 379 167 C385 181 386 197 382 212 C379 228 372 243 365 256 C360 266 355 275 350 278 C340 275 331 270 326 263 C319 251 315 237 312 224 C308 208 301 194 300 184 C299 171 302 159 307 150Z"/>
+    <!-- Asia -->
+    <path d="M382 99 C396 87 409 80 424 78 C442 74 461 76 477 78 C493 80 507 85 523 88 C545 90 569 91 584 95 C605 100 628 109 640 121 C649 130 654 145 651 152 C645 165 634 173 621 179 C608 184 595 184 586 187 C573 193 563 201 550 206 C537 207 524 202 510 195 C498 193 486 198 475 205 C465 205 454 199 448 190 C439 184 430 177 423 173 C412 170 402 163 398 157 C393 149 390 141 392 131 C390 118 385 108 382 99Z"/>
+    <!-- India / south-east islands -->
+    <path d="M466 205 485 212 482 234 470 244 462 223Z"/>
+    <path d="M523 223 542 230 539 246 522 245Z"/>
+    <path d="M555 236 577 238 573 256 555 253Z"/>
+    <!-- Australia -->
+    <path d="M548 289 C558 283 573 278 584 277 C598 277 617 283 626 290 C637 297 645 312 646 322 C642 334 635 343 629 347 C614 350 598 349 584 348 C570 346 557 340 550 330 C545 319 543 301 548 289Z"/>
+    <!-- Japan / islands -->
+    <path d="M612 191 620 197 616 208 608 202Z"/>
+  </g>
+  <g fill="url(#mapWash)" opacity=".22">
+    <path d="M42 132 67 94 111 77 151 83 179 103 170 124 145 139 134 162 110 172 92 158 65 157 48 145Z"/>
+    <path d="M166 218 193 217 214 242 218 274 204 307 187 346 169 363 158 337 154 302 146 268 151 237Z"/>
+    <path d="M307 150 345 143 378 163 386 201 374 242 351 278 326 268 311 228 299 187Z"/>
+    <path d="M382 99 420 78 476 77 523 88 584 94 640 121 651 152 621 179 586 185 550 206 510 195 475 205 448 190 423 173 398 158 392 131Z"/>
+    <path d="M548 289 584 277 626 290 646 322 629 347 584 348 550 330Z"/>
+  </g>
+
+  <!-- Curved, restrained artist routes. -->
+  <g fill="none" stroke-linecap="round" opacity=".5">
+    <path d="M118 111 Q227 122 349 246" stroke="url(#routeTwo)" stroke-width="1.35" stroke-dasharray="3 5"/>
+    <path d="M349 246 Q458 136 580 111" stroke="url(#routeOne)" stroke-width="1.35" stroke-dasharray="4 5"/>
+    <path d="M349 246 Q244 322 165 390" stroke="#a778ff" stroke-width="1.25" stroke-dasharray="3 5"/>
+    <path d="M349 246 Q461 310 551 380" stroke="#f564aa" stroke-width="1.25" stroke-dasharray="4 5"/>
+    <path d="M118 111 Q350 25 580 111" stroke="#55dccc" stroke-width=".9" stroke-dasharray="2 6" opacity=".52"/>
+    <path d="M165 390 Q355 456 551 380" stroke="#8c75f5" stroke-width=".9" stroke-dasharray="3 6" opacity=".44"/>
+  </g>
+
+  <!-- Eight premium location pins. -->
+  <g filter="url(#pinGlow)">
+    <g transform="translate(233 147)" fill="#50d9e1"><circle cy="-11" r="5.6" fill-opacity=".14"/><path d="M0 4C-5-3-6-6 0-14 6-6 5-3 0 4Z"/><circle cy="-8" r="1.8" fill="#fff"/></g>
+    <g transform="translate(286 93)" fill="#d878ff"><circle cy="-11" r="5.6" fill-opacity=".14"/><path d="M0 4C-5-3-6-6 0-14 6-6 5-3 0 4Z"/><circle cy="-8" r="1.8" fill="#fff"/></g>
+    <g transform="translate(420 151)" fill="#ff9856"><circle cy="-11" r="5.6" fill-opacity=".14"/><path d="M0 4C-5-3-6-6 0-14 6-6 5-3 0 4Z"/><circle cy="-8" r="1.8" fill="#fff"/></g>
+    <g transform="translate(481 225)" fill="#47d7b8"><circle cy="-11" r="5.6" fill-opacity=".14"/><path d="M0 4C-5-3-6-6 0-14 6-6 5-3 0 4Z"/><circle cy="-8" r="1.8" fill="#fff"/></g>
+    <g transform="translate(577 193)" fill="#f065b5"><circle cy="-11" r="5.6" fill-opacity=".14"/><path d="M0 4C-5-3-6-6 0-14 6-6 5-3 0 4Z"/><circle cy="-8" r="1.8" fill="#fff"/></g>
+    <g transform="translate(258 258)" fill="#5d9cff"><circle cy="-11" r="5.6" fill-opacity=".14"/><path d="M0 4C-5-3-6-6 0-14 6-6 5-3 0 4Z"/><circle cy="-8" r="1.8" fill="#fff"/></g>
+    <g transform="translate(386 291)" fill="#ffad57"><circle cy="-11" r="5.6" fill-opacity=".14"/><path d="M0 4C-5-3-6-6 0-14 6-6 5-3 0 4Z"/><circle cy="-8" r="1.8" fill="#fff"/></g>
+    <g transform="translate(491 333)" fill="#a97af8"><circle cy="-11" r="5.6" fill-opacity=".14"/><path d="M0 4C-5-3-6-6 0-14 6-6 5-3 0 4Z"/><circle cy="-8" r="1.8" fill="#fff"/></g>
+  </g>
+
+  <!-- Five real local Indian event-performer photographs. -->
+  <g class="artist-frame artist-frame--guitar" filter="url(#amberGlow)"><circle cx="118" cy="111" r="49" fill="#09101c"/><image href="/public/images/indian-guitarist.jpg" x="71" y="64" width="94" height="94" preserveAspectRatio="xMidYMid slice" clip-path="url(#clipGuitar)"/><circle cx="118" cy="111" r="48" fill="none" stroke="#ffad58" stroke-width="2.4"/></g>
+  <g class="artist-frame artist-frame--singer" filter="url(#pinkGlow)"><circle cx="580" cy="111" r="52" fill="#09101c"/><image href="/public/images/indian-singer.jpg" x="530" y="61" width="100" height="100" preserveAspectRatio="xMidYMid slice" clip-path="url(#clipSinger)"/><circle cx="580" cy="111" r="51" fill="none" stroke="#fa69a7" stroke-width="2.4"/></g>
+  <g class="artist-frame artist-frame--performer" filter="url(#softGlow)"><circle cx="349" cy="246" r="66" fill="#09101c"/><image href="/public/images/indian-comedian.jpg" x="285" y="182" width="128" height="128" preserveAspectRatio="xMidYMid slice" clip-path="url(#clipHost)"/><circle cx="349" cy="246" r="65" fill="none" stroke="#52ded4" stroke-width="2.8"/></g>
+  <g class="artist-frame artist-frame--dj" filter="url(#violetGlow)"><circle cx="165" cy="390" r="49" fill="#09101c"/><image href="/public/images/indian-dj.jpg" x="118" y="343" width="94" height="94" preserveAspectRatio="xMidYMid slice" clip-path="url(#clipDj)"/><circle cx="165" cy="390" r="48" fill="none" stroke="#ae7bff" stroke-width="2.4"/></g>
+  <g class="artist-frame artist-frame--dancer" filter="url(#amberGlow)"><circle cx="551" cy="380" r="52" fill="#09101c"/><image href="/public/images/events/cultural-event.jpg" x="501" y="330" width="100" height="100" preserveAspectRatio="xMidYMid slice" clip-path="url(#clipDancer)"/><circle cx="551" cy="380" r="51" fill="none" stroke="#ffb15e" stroke-width="2.4"/></g>
+</svg>
