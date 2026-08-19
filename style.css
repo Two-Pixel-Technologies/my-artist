@@ -4079,7 +4079,7 @@ main > section[id] { scroll-margin-top: 80px; }
 
 .orbit-node--musicians { top: 10%; left: 50%; flex-direction: column; gap: 5px; }
 .orbit-node--comedians { top: 20%; left: 80%; }
-.orbit-node--hosts { top: 52%; left: 92%; }
+.orbit-node--hosts { top: 52%; left: 89%; }
 .orbit-node--makeup { top: 81%; left: 80%; }
 .orbit-node--dancers { top: 89%; left: 50%; flex-direction: column-reverse; gap: 5px; }
 .orbit-node--magicians { top: 81%; left: 22%; flex-direction: row-reverse; }
@@ -4312,5 +4312,91 @@ main > section[id] { scroll-margin-top: 80px; }
   .hero__visual .cat-badge--comedians { top: 356px; right: auto; bottom: auto; left: 6%; }
   .hero__visual .cat-badge--djs { top: 370px; right: 8%; bottom: auto; left: auto; }
   .hero__visual .cat-badge--dancers { top: 374px; right: auto; bottom: auto; left: 50%; }
+}
+
+/* Mobile-only composition refinements. Desktop artwork and its coordinates remain unchanged. */
+@media (max-width: 639px) {
+  /* Bring the image group naturally below the stacked actions and preserve editorial breathing room. */
+  .hero__inner {
+    row-gap: 28px;
+  }
+
+  .hero__visual {
+    min-height: 318px;
+    align-items: flex-start;
+  }
+
+  /* The supporting cards retain a deliberate overlap while revealing more of each artist. */
+  .photo-collage {
+    margin-top: 0;
+    transform: rotate(6deg) scale(.9);
+  }
+
+  .photo-card--guitarist { left: -14px; }
+  .photo-card--dj { right: -14px; }
+
+  /* On phones, keep badges tied to the three visible cards rather than leaving orphaned labels below them. */
+  .hero__visual .cat-badge--makeup,
+  .hero__visual .cat-badge--magicians {
+    display: none !important;
+  }
+
+  .hero__visual .cat-badge--singers { top: 20px; left: 50%; }
+  .hero__visual .cat-badge--musicians { top: 44px; left: 0; }
+  .hero__visual .cat-badge--hosts { top: 75px; right: 0; left: auto; }
+  .hero__visual .cat-badge--djs { top: 238px; right: 8px; bottom: auto; left: auto; }
+  .hero__visual .cat-badge--comedians { top: 238px; left: 45px; bottom: auto; left: auto; }
+  .hero__visual .cat-badge--dancers { top: 220px; left: 10px; bottom: auto }
+
+  /* A square, single-ring orbit keeps the About ecosystem legible on compact screens. */
+  .about .ecosystem-orbit {
+    width: min(92vw, 420px);
+    min-height: 0;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    margin-inline: auto;
+    justify-self: center;
+    transform-origin: center;
+  }
+
+  .about .ecosystem-orbit__ring--outer {
+    width: 74%;
+    height: 74%;
+  }
+
+  .about .ecosystem-orbit__ring--inner,
+  .about .ecosystem-orbit__point {
+    display: none;
+  }
+
+  .about .ecosystem-hub {
+    width: 38%;
+  }
+
+  .about .orbit-node {
+    gap: 3px;
+    font-size: clamp(.45rem, 1.8vw, .58rem);
+  }
+
+  .about .orbit-node__icon {
+    width: 29px;
+    height: 29px;
+    flex-basis: 29px;
+  }
+
+  .about .orbit-node svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* Eight nodes follow the circumference of the sole outer orbit. */
+  .about .orbit-node--musicians { top: 13%; left: 50%; }
+  .about .orbit-node--singers { top: 23%; left: 18%; }
+  .about .orbit-node--comedians { top: 23%; left: 82%; }
+  .about .orbit-node--djs { top: 50%; left: 12%; }
+  .about .orbit-node--hosts { top: 50%; left: 90%; }
+  .about .orbit-node--magicians { top: 78%; left: 20%; }
+  .about .orbit-node--makeup { top: 78%; left: 80%; }
+  .about .orbit-node--dancers { top: 85%; left: 50%; }
 }
 
