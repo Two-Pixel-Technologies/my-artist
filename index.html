@@ -227,7 +227,7 @@
               </svg>
             </div>
             <div class="feature-text">
-              <h3>Get Discovered</h3>
+              <h3>Showcase Your Talent</h3>
               <p>Show your talent to the right audience.</p>
             </div>
           </div>
@@ -320,10 +320,12 @@
     </style>
   </defs>
 
-  <ellipse cx="350" cy="255" rx="332" ry="223" fill="url(#mapAura)"/>
+  <!-- The map alone is modestly enlarged; routes, pins, and artists retain their existing composition. -->
+  <g class="artist-map__background" transform="translate(-42 -30.6) scale(1.12)">
+    <ellipse cx="350" cy="255" rx="332" ry="223" fill="url(#mapAura)"/>
 
-  <!-- Recognisable world-map continents: dotted body plus fine teal contour. -->
-  <g fill="url(#continentDots)" stroke="#5d99ae" stroke-opacity=".46" stroke-width="1.1" stroke-linejoin="round" opacity=".3">
+    <!-- Recognisable world-map continents: dotted body plus fine teal contour. -->
+    <g fill="url(#continentDots)" stroke="#5d99ae" stroke-opacity=".46" stroke-width="1.1" stroke-linejoin="round" opacity=".3">
     <!-- North America + Greenland -->
     <path d="M42 132 C53 113 61 97 82 90 C102 81 123 77 145 84 C158 88 174 96 179 106 C183 117 172 125 160 130 C151 135 146 142 142 151 C137 165 125 174 112 172 C100 170 98 161 88 159 L65 157 C53 153 44 144 42 132Z"/>
     <path d="M168 57 199 48 220 59 208 73 182 72Z"/>
@@ -345,13 +347,14 @@
     <path d="M548 289 C558 283 573 278 584 277 C598 277 617 283 626 290 C637 297 645 312 646 322 C642 334 635 343 629 347 C614 350 598 349 584 348 C570 346 557 340 550 330 C545 319 543 301 548 289Z"/>
     <!-- Japan / islands -->
     <path d="M612 191 620 197 616 208 608 202Z"/>
-  </g>
-  <g fill="url(#mapWash)" opacity=".22">
+    </g>
+    <g fill="url(#mapWash)" opacity=".22">
     <path d="M42 132 67 94 111 77 151 83 179 103 170 124 145 139 134 162 110 172 92 158 65 157 48 145Z"/>
     <path d="M166 218 193 217 214 242 218 274 204 307 187 346 169 363 158 337 154 302 146 268 151 237Z"/>
     <path d="M307 150 345 143 378 163 386 201 374 242 351 278 326 268 311 228 299 187Z"/>
     <path d="M382 99 420 78 476 77 523 88 584 94 640 121 651 152 621 179 586 185 550 206 510 195 475 205 448 190 423 173 398 158 392 131Z"/>
     <path d="M548 289 584 277 626 290 646 322 629 347 584 348 550 330Z"/>
+    </g>
   </g>
 
   <!-- Curved, restrained artist routes. -->
