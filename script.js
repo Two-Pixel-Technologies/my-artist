@@ -6,6 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initNavbarScrollState();
   initMobileNav();
+  initMobileContactAnchor();
   initScrollReveal();
 });
 
@@ -41,6 +42,31 @@ function initMobileNav() {
       toggle.classList.remove('is-open');
       toggle.setAttribute('aria-expanded', 'false');
     });
+  });
+}
+
+/* Contact only: offset the mobile navigation target by the live fixed-navbar height. */
+function initMobileContactAnchor() {
+  const contactLink = document.querySelector('#navLinks a[href="#contact"]');
+  const contactSection = document.getElementById('contact');
+  const navbar = document.getElementById('navbar');
+  const mobileQuery = window.matchMedia('(max-width: 767px)');
+
+  if (!contactLink || !contactSection || !navbar) return;
+
+  contactLink.addEventListener('click', (event) => {
+    if (!mobileQuery.matches) return;
+
+    event.preventDefault();
+
+    const targetTop = Math.max(
+      0,
+      window.scrollY + contactSection.getBoundingClientRect().top - navbar.getBoundingClientRect().height
+    );
+    const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+
+    window.history.pushState(null, '', '#contact');
+    window.scrollTo({ top: targetTop, behavior });
   });
 }
 
