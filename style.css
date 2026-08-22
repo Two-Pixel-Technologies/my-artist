@@ -4026,15 +4026,16 @@ main > section[id] { scroll-margin-top: 80px; }
   -webkit-backdrop-filter: blur(9px);
 }
 
-.ecosystem-hub strong {
-  color: #f5f2ee;
+.ecosystem-hub .brand-name {
+  justify-content: center;
+  width: 100%;
   font-size: clamp(1.16rem, 2vw, 1.42rem);
-  font-family: var(--font-display);
+  font-family: var(--font-body);
+  font-weight: 700;
   line-height: 1;
   letter-spacing: -.035em;
 }
 
-.ecosystem-hub strong span { color: var(--orange); }
 .ecosystem-hub p { margin: 12px 0 0; color: rgba(232, 227, 231, .8); font-size: .65rem; line-height: 1.45; }
 
 .orbit-node {
@@ -4647,6 +4648,7 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-style: italic;
 }
 
 .about .about__tagline + .about__heading {
