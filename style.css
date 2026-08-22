@@ -4578,6 +4578,88 @@ body {
     radial-gradient(circle at 25% 60%, rgba(74, 159, 255, .05), transparent 55%);
 }
 
+/* ---------- Targeted official brand + About tagline integration ---------- */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+}
+
+.logo .brand-mark {
+  display: block;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.site-footer__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 24px;
+}
+
+.site-footer__brand .brand-mark {
+  display: block;
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.brand-name {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: var(--font-body);
+  font-size: 1.22rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.035em;
+  white-space: nowrap;
+}
+
+.brand-name__my { color: #7c5ac7; }
+
+.brand-name__artist {
+  color: #e46c66;
+  background: linear-gradient(90deg, #d95783, #ed784d);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-name__domain { color: #e89a68; }
+
+.site-footer__brand .brand-name { font-size: .875rem; }
+
+.navbar { background: rgba(12, 8, 27, .94); }
+.navbar.is-scrolled { background: rgba(12, 8, 27, .97); }
+
+.about .about__tagline {
+  margin: 14px 0 9px;
+  font-family: "Noto Sans Devanagari", "Nirmala UI", Mangal, sans-serif;
+  font-size: clamp(.84rem, 1.1vw, 1rem);
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: .015em;
+  color: #ec4899;
+  background: linear-gradient(90deg, #a78bfa 0%, #ec4899 52%, #f5811f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about .about__tagline + .about__heading {
+  margin-top: 0;
+}
+
+@media (max-width: 640px) {
+  .logo { height: 28px; }
+  .logo .brand-mark { width: 24px; height: 24px; }
+  .logo .brand-name { font-size: 1.08rem; }
+  .about .about__tagline { margin-top: 12px; margin-bottom: 8px; }
+}
+
 .hiring::before {
   background:
     radial-gradient(ellipse, rgba(46, 204, 154, .095), transparent 67%),
