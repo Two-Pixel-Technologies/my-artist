@@ -597,9 +597,87 @@ body {
   letter-spacing: 0.025em;
 }
 
+.site-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 20px;
+}
+
+.site-footer__links a {
+  color: #9ca3af;
+  font-size: 0.75rem;
+  transition: color 0.2s ease;
+}
+
+.site-footer__links a:hover {
+  color: #fff;
+}
+
 .site-footer__copy {
   color: #9ca3af;
 }
+
+/* ---------- Static policy pages ---------- */
+.policy-page {
+  padding: calc(var(--navbar-h) + 12px) 0 80px;
+  max-width: 760px;
+}
+
+@media (min-width: 1024px) {
+  .policy-page { padding-top: calc(var(--navbar-h) + 15px); }
+}
+
+.policy-page__eyebrow {
+  color: var(--accent-orange-2);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
+}
+
+.policy-page h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4vw, 2.5rem);
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  margin: 14px 0 8px;
+}
+
+.policy-page__updated {
+  color: var(--color-text-faint);
+  font-size: 0.85rem;
+  margin-bottom: 36px;
+}
+
+.policy-page h2 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin: 34px 0 12px;
+}
+
+.policy-page p {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.policy-page ul {
+  margin: 0 0 14px;
+  padding-left: 20px;
+  list-style: disc;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.policy-page li { margin-bottom: 6px; }
+
+.policy-page a { color: var(--accent-orange-2); }
+.policy-page a:hover { text-decoration: underline; }
 
 @media (min-width: 640px) {
   .site-footer {
@@ -611,6 +689,23 @@ body {
 @media (min-width: 1024px) {
   .site-footer {
     padding-inline: 64px;
+  }
+}
+
+/* Tablet/iPad only: the 3-way row (brand / links / copy) gets too tight to wrap
+   cleanly between 768-1024px, so stack it in balanced, generously-spaced areas. */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .site-footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 18px;
+    padding: 32px 48px;
+  }
+
+  .site-footer__links {
+    justify-content: center;
+    gap: 14px 32px;
   }
 }
 
@@ -902,6 +997,11 @@ body {
 .event-card--party {
   --card-accent: #e47cab;
   --card-border: rgba(228, 124, 171, 0.34);
+}
+
+.event-card--bhajan {
+  --card-accent: #e8a33d;
+  --card-border: rgba(232, 163, 61, 0.34);
 }
 
 .trust-strip {
@@ -1530,11 +1630,12 @@ body {
 .event-card img {
   position: absolute;
   inset: 0 0 auto;
-  height: 62%;
+  height: 58%;
   object-position: center top;
 }
 
 .event-card__copy {
+  top: 58%;
   left: 10px;
   right: 10px;
   bottom: 16px;
@@ -1547,18 +1648,23 @@ body {
 .event-card__copy b {
   display: grid;
   place-items: center;
-  width: 29px;
-  height: 29px;
-  margin: 0 0 8px;
+  width: 26px;
+  height: 26px;
+  flex: 0 0 26px;
+  margin: 0 0 6px;
   border-radius: 50%;
   background: color-mix(in srgb, var(--card-accent) 16%, transparent);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
 }
 
 .event-card h3 {
+  min-height: 2.3em;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
   font-size: 0.72rem;
   line-height: 1.15;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .event-card p {
@@ -1593,10 +1699,60 @@ body {
   --card-border: rgba(199, 118, 229, 0.48);
 }
 
+.event-card--bhajan {
+  --card-accent: #e8a33d;
+  --card-border: rgba(232, 163, 61, 0.48);
+}
+
 @media (min-width: 980px) {
   .event-showcase {
     gap: 14px;
     flex-wrap: nowrap;
+  }
+}
+
+/* A sixth card (Bhajans & Religious Events) is too wide for the fixed 380px/1fr
+   composition used in this range — let the row scroll horizontally instead of
+   letting `.hiring`'s overflow:hidden silently clip the last cards. */
+@media (min-width: 980px) and (max-width: 1439px) {
+  .event-showcase:has(.event-card--bhajan) {
+    gap: 10px;
+    min-width: 0;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+  }
+
+  .event-showcase:has(.event-card--bhajan) .event-card {
+    width: 100px;
+    flex-basis: 100px;
+  }
+}
+
+/* Slightly wider hiring event cards on desktop only, keeping the row single-line and gaps consistent. */
+@media (min-width: 1200px) {
+  .event-showcase:has(.event-card--bhajan) .event-card,
+  .event-card {
+    width: 108px;
+    flex-basis: 108px;
+  }
+}
+
+/* Desktop (1200-1439px): the fixed-width row above no longer fits in the 380px/1fr
+   composition, so replace the horizontally-scrolling flex row with 6 equal, flexible
+   grid columns that fit the available space with no scrollbar. */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .event-showcase:has(.event-card--bhajan) {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    overflow: visible;
+    min-width: 0;
+    padding-bottom: 0;
+  }
+
+  .event-showcase:has(.event-card--bhajan) .event-card {
+    width: auto;
+    flex: none;
   }
 }
 
@@ -3572,7 +3728,7 @@ main > section[id] { scroll-margin-top: 80px; }
   .cat-badge--magicians { top: 244px; left: 0; }
   .cat-badge--dancers { top: 244px; bottom: auto; left: 50%; transform: translateX(-50%); }
   .cat-badge--djs { top: 244px; right: 0; bottom: auto; }
-  .cat-badge--comedians { top: 278px; bottom: auto; left: 9%; }
+  .cat-badge--comedians { top: 278px; bottom: auto; left: 4%; }
   .cat-badge--makeup { top: 278px; right: 9%; bottom: auto; }
 
   .about .stats {
@@ -3680,13 +3836,13 @@ main > section[id] { scroll-margin-top: 80px; }
 /* All Hero labels remain in the top/side orbit of the collage on desktop. */
 @media (min-width: 1200px) {
   .cat-badge--musicians { top: 20px; left: 430px; }
-  .cat-badge--singers { top: 50px; left: 42%; }
+  .cat-badge--singers { top: 45px; left: 1%; }
   .cat-badge--hosts { top: 230px; right: -32px; }
   .cat-badge--makeup { top: 420px; bottom: auto; left: 80%; right: auto; }
   .cat-badge--dancers { top: 400px; bottom: auto; left: 40%; }
-  .cat-badge--magicians { top: 75px; left: -80px; }
-  .cat-badge--djs { top: 400px; bottom: auto; left: -80px; right: auto; }
-  .cat-badge--comedians { top: 245px; bottom: auto; left: -102px; }
+  .cat-badge--magicians { top: 56px; left: 44%; }
+  .cat-badge--djs { top: 420px; bottom: auto; left: auto;right: 430px;}
+  .cat-badge--comedians { top: 260px; bottom: auto; left: -60px; }
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
@@ -3695,8 +3851,8 @@ main > section[id] { scroll-margin-top: 80px; }
   .cat-badge--hosts { top: -4px; right: 0; }
   .cat-badge--makeup { top: 36px; bottom: auto; left: 17%; right: auto; }
   .cat-badge--dancers { top: 36px; bottom: auto; left: 50%; }
-  .cat-badge--magicians { top: 100px; left: -136px; }
-  .cat-badge--djs { top: 144px; bottom: auto; left: -136px; right: auto; }
+  .cat-badge--magicians { top: 44px; left: 60%; }
+  .cat-badge--djs { top: 76px; bottom: auto; left: auto; right: 0; }
   .cat-badge--comedians { top: 188px; bottom: auto; left: -136px; }
 }
 
@@ -4079,13 +4235,13 @@ main > section[id] { scroll-margin-top: 80px; }
   filter: drop-shadow(0 0 5px color-mix(in srgb, var(--node-accent) 55%, transparent));
 }
 
-.orbit-node--musicians { top: 10%; left: 50%; flex-direction: column; gap: 5px; }
+.orbit-node--musicians { top: 7%; left: 50%; flex-direction: column-reverse; gap: 5px; }
 .orbit-node--comedians { top: 20%; left: 80%; }
-.orbit-node--hosts { top: 52%; left: 89%; }
+.orbit-node--hosts { top: 52%; left: 88%; }
 .orbit-node--makeup { top: 81%; left: 80%; }
-.orbit-node--dancers { top: 89%; left: 50%; flex-direction: column-reverse; gap: 5px; }
+.orbit-node--dancers { top: 92%; left: 50%; flex-direction: column; gap: 5px; }
 .orbit-node--magicians { top: 81%; left: 22%; flex-direction: row-reverse; }
-.orbit-node--djs { top: 52%; left: 12%; flex-direction: row-reverse; }
+.orbit-node--djs { top: 52%; left: 13%; flex-direction: row-reverse; }
 .orbit-node--singers { top: 20%; left: 20%; flex-direction: row-reverse; }
 
 @media (hover: hover) {
@@ -4283,9 +4439,9 @@ main > section[id] { scroll-margin-top: 80px; }
   .hero__visual .cat-badge--musicians { top: 58px; left: 4px; }
   .hero__visual .cat-badge--singers { top: 0; left: 47%; }
   .hero__visual .cat-badge--hosts { top: 48px; right: 0; left: auto; }
-  .hero__visual .cat-badge--magicians { top: 160px; right: auto; bottom: auto; left: -122px; }
+  .hero__visual .cat-badge--magicians { top: 0; right: auto; bottom: auto; left: 58%; }
   .hero__visual .cat-badge--comedians { top: 250px; right: auto; bottom: auto; left: -134px; }
-  .hero__visual .cat-badge--djs { top: 360px; right: auto; bottom: auto; left: -102px; }
+  .hero__visual .cat-badge--djs { top: 110px; right: 0; bottom: auto; left: auto; }
   .hero__visual .cat-badge--dancers { top: 415px; right: auto; bottom: auto; left: 20px; }
   .hero__visual .cat-badge--makeup { top: 400px; right: 0; bottom: auto; left: auto; }
 }
@@ -4392,14 +4548,14 @@ main > section[id] { scroll-margin-top: 80px; }
   }
 
   /* Eight nodes follow the circumference of the sole outer orbit. */
-  .about .orbit-node--musicians { top: 13%; left: 50%; }
-  .about .orbit-node--singers { top: 23%; left: 18%; }
+  .about .orbit-node--musicians { top: 11%; left: 50%; }
+  .about .orbit-node--singers { top: 23%; left: 19%; }
   .about .orbit-node--comedians { top: 23%; left: 82%; }
-  .about .orbit-node--djs { top: 50%; left: 12%; }
+  .about .orbit-node--djs { top: 50%; left: 11%; }
   .about .orbit-node--hosts { top: 50%; left: 90%; }
   .about .orbit-node--magicians { top: 78%; left: 20%; }
-  .about .orbit-node--makeup { top: 78%; left: 80%; }
-  .about .orbit-node--dancers { top: 85%; left: 50%; }
+  .about .orbit-node--makeup { top: 78%; left: 82%; }
+  .about .orbit-node--dancers { top: 88%; left: 50%; }
 }
 
 /* Large-desktop only: keep the hiring copy and its five-card showcase as one centered composition. */
@@ -4498,16 +4654,28 @@ main > section[id] { scroll-margin-top: 80px; }
   .photo-card--comedian { left: -24px; }
   .photo-card--makeup { right: -24px; }
 
-  /* Eight labels are distributed around the card perimeter, never beneath the visual. */
+  /* Eight labels balance in two rows (3 upper, 3 lower) with 2 more resting on the sides of the collage. */
   .hero__visual .cat-badge { z-index: 30; }
-  .hero__visual .cat-badge--singers { top: 25px; left: 40%; }
-  .hero__visual .cat-badge--musicians { top: 62px; left: 0; }
-  .hero__visual .cat-badge--hosts { top: 65px; right: -15px; left: auto; }
-  .hero__visual .cat-badge--magicians { top: 190px; right: auto; bottom: auto; left: -20px; }
-  .hero__visual .cat-badge--djs { top: 200px; right: 0; bottom: auto; left: auto; }
-  .hero__visual .cat-badge--comedians { top: 315px; right: auto; bottom: auto; left: -28px; }
-  .hero__visual .cat-badge--makeup { top: 335px; right: -19px; bottom: auto; left: auto; }
-  .hero__visual .cat-badge--dancers { top: 300px; right: auto; bottom: auto; left: 32%; }
+  .hero__visual .cat-badge--musicians { top: 80px; left: -8px; right: auto; }
+  .hero__visual .cat-badge--singers {  top: 100px; left: 75%; right: auto; bottom: auto;} 
+  .hero__visual .cat-badge--magicians { top: 68px; left: 38%; right: auto; }
+  .hero__visual .cat-badge--djs { top: 220px; left: -28px; right: auto; bottom: auto; }
+  .hero__visual .cat-badge--hosts { top: 260px; right: -24px; left: auto; }
+  .hero__visual .cat-badge--comedians { top: 360px; left: -38px; right: auto; bottom: auto; }
+  .hero__visual .cat-badge--dancers { top: 335px; left: 34%; right: auto; bottom: auto; }
+  .hero__visual .cat-badge--makeup { top: 385px; right: -16px; left: auto; bottom: auto; }
+}
+
+@media (max-width: 820px){
+  .hero__visual .cat-badge { z-index: 30; }
+  .hero__visual .cat-badge--musicians { top: 40px; left: -8px; right: auto; }
+  .hero__visual .cat-badge--singers {  top: 68px; left: 80%; right: auto; bottom: auto;} 
+  .hero__visual .cat-badge--magicians { top: 40px; left: 38%; right: auto; }
+  .hero__visual .cat-badge--djs { top: 180px; left: -28px; right: auto; bottom: auto; }
+  .hero__visual .cat-badge--hosts { top: 210px; right: -24px; left: auto; }
+  .hero__visual .cat-badge--comedians { top: 310px; left: -28px; right: auto; bottom: auto; }
+  .hero__visual .cat-badge--dancers { top: 285px; left: 34%; right: auto; bottom: auto; }
+  .hero__visual .cat-badge--makeup { top: 330px; right: -35px; left: auto; bottom: auto; }
 }
 
 /* Mobile-only: preserve the orbit geometry while centering the full visual and its anchor targets. */
@@ -4745,14 +4913,14 @@ body {
     z-index: 30;
   }
 
-  .hero__visual .cat-badge--singers { top: 40px; left: calc(50% - 37px); }
-  .hero__visual .cat-badge--musicians { top: 43px; left: 0; }
-  .hero__visual .cat-badge--hosts { top: 30px; right: 0; left: auto; }
-  .hero__visual .cat-badge--magicians { top: 154px; right: auto; bottom: auto; left: 0; }
-  .hero__visual .cat-badge--djs { top: 130px; right: 0; bottom: auto; left: auto; }
-  .hero__visual .cat-badge--comedians { top: 242px; right: auto; bottom: auto; left: 0; }
-  .hero__visual .cat-badge--makeup { top: 220px; right: 0; bottom: auto; left: auto; }
-  .hero__visual .cat-badge--dancers { top: 230px; right: auto; bottom: auto; left: calc(50% - 34px); }
+  .hero__visual .cat-badge--singers {  top: 43px; left: 40px;} 
+  .hero__visual .cat-badge--musicians { top: 18px; right: 15px; left: auto;}
+  .hero__visual .cat-badge--hosts { top: 125px; right: 22px; bottom: auto; left: auto; }
+  .hero__visual .cat-badge--magicians {top: 50px; left: calc(50% - 37px); } 
+  .hero__visual .cat-badge--djs { top: 242px; right: auto; bottom: auto; left: 0;} 
+  .hero__visual .cat-badge--comedians { top: 150px; right: auto; bottom: auto; left: -5px; }
+  .hero__visual .cat-badge--makeup { top: 210px; right: 0; bottom: auto; left: auto; }
+  .hero__visual .cat-badge--dancers { top: 220px; right: auto; bottom: auto; left: 120px; }
 }
 
 
