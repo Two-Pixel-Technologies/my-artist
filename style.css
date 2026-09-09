@@ -3071,6 +3071,10 @@ main > section[id] { scroll-margin-top: 80px; }
   html { scroll-padding-top: 96px; }
   main > section[id] { scroll-margin-top: -58px; }
 }
+@media (min-width: 1024px) {
+  .about { scroll-margin-top: -80px!important }
+}
+
 
 @media (max-width: 767px) {
   .about__content,
