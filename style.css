@@ -4245,7 +4245,7 @@ main > section[id] { scroll-margin-top: 80px; }
 .orbit-node--makeup { top: 81%; left: 80%; }
 .orbit-node--dancers { top: 92%; left: 50%; flex-direction: column; gap: 5px; }
 .orbit-node--magicians { top: 81%; left: 22%; flex-direction: row-reverse; }
-.orbit-node--djs { top: 52%; left: 13%; flex-direction: row-reverse; }
+.orbit-node--djs { top: 52%; left: 10%; flex-direction: row-reverse; }
 .orbit-node--singers { top: 20%; left: 20%; flex-direction: row-reverse; }
 
 @media (hover: hover) {
@@ -4555,7 +4555,7 @@ main > section[id] { scroll-margin-top: 80px; }
   .about .orbit-node--musicians { top: 11%; left: 50%; }
   .about .orbit-node--singers { top: 23%; left: 19%; }
   .about .orbit-node--comedians { top: 23%; left: 82%; }
-  .about .orbit-node--djs { top: 50%; left: 11%; }
+  .about .orbit-node--djs { top: 50%; left: 8%; }
   .about .orbit-node--hosts { top: 50%; left: 90%; }
   .about .orbit-node--magicians { top: 78%; left: 20%; }
   .about .orbit-node--makeup { top: 78%; left: 82%; }
