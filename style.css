@@ -616,7 +616,21 @@ body {
 }
 
 .site-footer__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
   color: #9ca3af;
+  text-align: center;
+}
+
+.site-footer__copy-main {
+  color: #9ca3af;
+}
+
+.site-footer__copy-sub {
+  color: #6b7280;
+  font-size: 0.68rem;
 }
 
 /* ---------- Static policy pages ---------- */
