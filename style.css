@@ -2783,6 +2783,31 @@ body {
   box-shadow: 0 0 20px rgba(236, 72, 153, .4);
 }
 
+.notify__form button:disabled {
+  opacity: .7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.notify__form-status {
+  min-height: 18px;
+  margin: 10px 0 0;
+  font: 600 .78rem var(--font-body);
+}
+
+.notify__form-status:empty {
+  margin: 0;
+}
+
+.notify__form-status--success {
+  color: #4ade80;
+}
+
+.notify__form-status--error {
+  color: #f87171;
+}
+
 .notify__badges {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

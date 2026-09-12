@@ -3,11 +3,19 @@
 // Navbar behavior + scroll reveal animations
 // =========================================================
 
+// EmailJS configuration — replace with real credentials before going live.
+const EMAILJS_CONFIG = {
+  publicKey: 'YOUR_EMAILJS_PUBLIC_KEY',
+  serviceId: 'YOUR_EMAILJS_SERVICE_ID',
+  templateId: 'YOUR_EMAILJS_TEMPLATE_ID',
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   initNavbarScrollState();
   initMobileNav();
   initMobileContactAnchor();
   initScrollReveal();
+  initNotifyForm();
 });
 
 /* Add a background/border to the navbar once the page scrolls */
@@ -67,6 +75,55 @@ function initMobileContactAnchor() {
 
     window.history.pushState(null, '', '#contact');
     window.scrollTo({ top: targetTop, behavior });
+  });
+}
+
+/* Contact section "Notify Me" form — sends the submitted email via EmailJS */
+function initNotifyForm() {
+  const form = document.getElementById('notifyForm');
+  const emailInput = document.getElementById('notifyEmail');
+  const status = document.getElementById('notifyFormStatus');
+  const button = form ? form.querySelector('button[type="submit"]') : null;
+
+  if (!form || !emailInput || !status || !button) return;
+  if (typeof emailjs === 'undefined') return;
+
+  emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
+
+  const setStatus = (message, variant) => {
+    status.textContent = message;
+    status.classList.remove('notify__form-status--success', 'notify__form-status--error');
+    if (variant) status.classList.add(`notify__form-status--${variant}`);
+  };
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const email = emailInput.value.trim();
+    if (!email || !emailInput.checkValidity()) {
+      setStatus('Please enter a valid email address.', 'error');
+      emailInput.focus();
+      return;
+    }
+
+    const originalLabel = button.textContent;
+    button.disabled = true;
+    button.textContent = 'Sending...';
+    setStatus('');
+
+    emailjs
+      .sendForm(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, form)
+      .then(() => {
+        setStatus('You’re on the list!', 'success');
+        form.reset();
+      })
+      .catch(() => {
+        setStatus('Something went wrong. Please try again.', 'error');
+      })
+      .finally(() => {
+        button.disabled = false;
+        button.textContent = originalLabel;
+      });
   });
 }
 

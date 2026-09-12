@@ -184,7 +184,7 @@
         <p>Choose from verified professionals <br>for every type of event.</p>
         <div class="hiring__ctas">
           <a class="btn btn--teal" href="https://forms.google.com/" target="_blank" rel="noopener noreferrer">Tell Us Your Requirement</a>
-          <a class="btn btn--whatsapp" href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener noreferrer">
+          <a class="btn btn--whatsapp" href="https://wa.me/919712026900" target="_blank" rel="noopener noreferrer">
             
             <span>Chat on WhatsApp</span>
           </a>
@@ -407,11 +407,12 @@
         <h2 class="notify__heading">Be The First To Know<br>When We <span>Go Live.</span></h2>
         <p class="notify__description">Join our list and get notified about launch, early access, features and exclusive updates.</p>
 
-        <form class="notify__form" action="#contact">
+        <form class="notify__form" id="notifyForm" action="#contact">
           <label class="sr-only" for="notifyEmail">Email address</label>
           <input id="notifyEmail" name="email" type="email" placeholder="Enter your email address" autocomplete="email" required>
           <button type="submit">Notify Me</button>
         </form>
+        <p class="notify__form-status" id="notifyFormStatus" role="status" aria-live="polite"></p>
 
         <div class="notify__badges" aria-label="Newsletter benefits">
           <div class="notify-badge notify-badge--cyan"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-2.9 7.9-7 10-4.1-2.1-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg><span>No spam, ever</span></div>
@@ -457,6 +458,7 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
