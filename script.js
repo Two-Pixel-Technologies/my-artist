@@ -117,8 +117,10 @@ function initNotifyForm() {
         setStatus('You’re on the list!', 'success');
         form.reset();
       })
-      .catch(() => {
-        setStatus('Something went wrong. Please try again.', 'error');
+      .catch((error) => {
+        const detail = (error && (error.text || error.message)) || 'Unknown error';
+        setStatus(`Something went wrong: ${detail}`, 'error');
+        console.error('EmailJS send failed:', error);
       })
       .finally(() => {
         button.disabled = false;
