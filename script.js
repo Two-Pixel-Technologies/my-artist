@@ -3,11 +3,11 @@
 // Navbar behavior + scroll reveal animations
 // =========================================================
 
-// EmailJS configuration — replace with real credentials before going live.
+// EmailJS configuration
 const EMAILJS_CONFIG = {
-  publicKey: 'YOUR_EMAILJS_PUBLIC_KEY',
-  serviceId: 'YOUR_EMAILJS_SERVICE_ID',
-  templateId: 'YOUR_EMAILJS_TEMPLATE_ID',
+  publicKey: 's1jaOI0OwCIYTJJwr',
+  serviceId: 'service_rbls36n',
+  templateId: 'template_rhmvim7',
 };
 
 document.addEventListener('DOMContentLoaded', () => {
